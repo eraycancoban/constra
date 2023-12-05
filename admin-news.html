@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stats div {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+            margin-bottom: 10px;
+            max-width: calc(33.33% - 20px);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom:12px;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            margin-bottom: 8px;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            height: auto;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a class="active" href="admin-dashboard.html">Home</a>
+        <a href="admin-profile.html">Profilim</a>
+        <a href="admin-news.html">Haber Ekle</a>
+    </div>
+
+    <div class="header">
+        <h1>Admin Panel</h1>
+    </div>
+
+    <div class="container">
+        <form>
+            <label for="title">Haber Başlığı:</label>
+            <input type="text" id="title" name="title">
+
+            <label for="image">Haber Resmi URL:</label>
+            <input type="text" id="image" name="image">
+
+            <label for="content">Haber İçeriği:</label>
+            <textarea id="content" name="content" rows="4"></textarea>
+            <br/>
+            
+
+            <label>Haber Kategorisi:</label>        
+
+
+            <div class="radio-group">
+                <label><input type="radio" name="category" value="politics"> Politika</label>
+                <label><input type="radio" name="category" value="sports"> Spor</label>
+                <label><input type="radio" name="category" value="technology"> Teknoloji</label>
+                <!-- Add more categories as needed -->
+            </div>
+
+            <label>Haber Etiketleri:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="tag1"> Etiket 1</label>
+                <label><input type="checkbox" name="tag2"> Etiket 2</label>
+                <label><input type="checkbox" name="tag3"> Etiket 3</label>
+                <!-- Add more tags as needed -->
+            </div>
+
+            <input type="submit" value="Haberi Ekle">
+        </form>
+    </div>
+</body>
+
+</html>

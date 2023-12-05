@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stats div {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+            margin-bottom: 10px;
+            max-width: calc(33.33% - 20px);
+        }
+
+        canvas {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        canvas#customerPieChart,
+        canvas#customerLineChart {
+            margin-top: 0;
+            width: calc(50% - 10px); /* İki grafik arasında 10 piksel boşluk bırak */
+        }
+
+        body {
+            margin: 0;
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a class="active" href="admin-dashboard.html">Home</a>
+        <a href="admin-profile.html">Profilim</a>
+        <a href="admin-news.html">Haber Ekle</a>
+    </div>
+
+    <div class="header">
+        <h1>Admin Panel</h1>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div>
+                <h2>Müşteri Tipi 1</h2>
+                <p>Sayı: 100</p>
+            </div>
+            <div>
+                <h2>Müşteri Tipi 2</h2>
+                <p>Sayı: 50</p>
+            </div>
+            <div>
+                <h2>Müşteri Tipi 3</h2>
+                <p>Sayı: 30</p>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <canvas id="customerPieChart"></canvas>
+            <canvas id="customerLineChart"></canvas>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Pasta grafiği için bu ayın müşteri sayıları
+                var currentMonthData = {
+                    'Müşteri Tipi 1': 90,
+                    'Müşteri Tipi 2': 40,
+                    'Müşteri Tipi 3': 20
+                };
+
+                // Çizgi grafiği için ay bazında müşteri sayıları
+                var monthlyData = {
+                    'January': [90, 40, 20],
+                    'February': [80, 45, 25],
+                    'March': [95, 55, 30]
+                    // Diğer aylar...
+                };
+
+                var pieChartCtx = document.getElementById('customerPieChart').getContext('2d');
+                var lineChartCtx = document.getElementById('customerLineChart').getContext('2d');
+
+                var pieChart = new Chart(pieChartCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(currentMonthData),
+                        datasets: [{
+                            data: Object.values(currentMonthData),
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                        }]
+                    }
+                });
+
+                var lineChart = new Chart(lineChartCtx, {
+                    type: 'line',
+                    data: {
+                        labels: Object.keys(monthlyData),
+                        datasets: [{
+                            label: 'Müşteri Tipi 1',
+                            borderColor: '#FF6384',
+                            data: monthlyData.January
+                        }, {
+                            label: 'Müşteri Tipi 2',
+                            borderColor: '#36A2EB',
+                            data: monthlyData.February
+                        }, {
+                            label: 'Müşteri Tipi 3',
+                            borderColor: '#FFCE56',
+                            data: monthlyData.March
+                        }]
+                    }
+                });
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>

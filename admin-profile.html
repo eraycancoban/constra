@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stats div {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+            margin-bottom: 10px;
+            max-width: calc(33.33% - 20px);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 200px;
+            padding: 1px 16px;
+            height: auto;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a class="active" href="admin-dashboard.html">Home</a>
+        <a href="admin-profile.html">Profilim</a>
+        <a href="admin-news.html">Haber Ekle</a>
+    </div>
+
+    <div class="header">
+        <h1>Admin Panel</h1>
+    </div>
+
+    <div class="container">
+        
+        <img src="https://via.placeholder.com/150" alt="Placeholder Photo" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+        <br><pre>Ad: John    Soyad: Doe</pre>
+        <pre>Ünvan: Mimar</pre>
+        <pre>E-posta: johndoe@example.com</pre>
+        
+        
+
+
+        <form>
+            <label for="photo">Fotoğraf:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" style="display: none;">
+            <label for="photo" style="cursor: pointer;">
+                <img src="https://via.placeholder.com/150" alt="Placeholder Photo" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+            </label>
+
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="surname">Soyad:</label>
+            <input type="text" id="surname" name="surname">
+
+            <label for="title">Ünvan:</label>
+            <input type="text" id="title" name="title">
+
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="pass">Şifre:</label>
+            <input type="password" id="pass" name="pass">
+
+            <input type="submit" value="Değişikliği Kaydet">
+        </form>
+
+    </div>
+</body>
+
+</html>
