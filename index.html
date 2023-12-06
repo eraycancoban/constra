@@ -61,8 +61,8 @@ FACEBOOK: https://www.facebook.com/themefisher
 
   <script>
     $(document).ready(function () {
-      // Set the interval for automatic sliding (in milliseconds)
-      var interval = 5000; // Change this value according to your preference (5 seconds in this example)
+      // Set the intervals for each slide (in milliseconds)
+      var intervals = [3000, 3000, 3000]; // Adjust these values according to your preference
   
       // Function to switch to the next slide
       function nextSlide() {
@@ -73,12 +73,21 @@ FACEBOOK: https://www.facebook.com/themefisher
           nextSlide = $('.banner-carousel-item:first');
         }
   
+        var index = activeSlide.index();
         activeSlide.removeClass('active');
         nextSlide.addClass('active');
+  
+        // Set interval for the next slide
+        var nextInterval = intervals[(index + 1) % intervals.length];
+        setTimeout(function () {
+          nextSlide();
+        }, nextInterval);
       }
   
-      // Set interval for automatic sliding
-      setInterval(nextSlide, interval);
+      // Set initial interval for the first slide
+      setTimeout(function () {
+        nextSlide();
+      }, intervals[0]);
     });
   </script>
   
