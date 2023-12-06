@@ -57,6 +57,32 @@ FACEBOOK: https://www.facebook.com/themefisher
   <!-- Template styles-->
   <link rel="stylesheet" href="css/style.css">
 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Set the interval for automatic sliding (in milliseconds)
+      var interval = 5000; // Change this value according to your preference (5 seconds in this example)
+  
+      // Function to switch to the next slide
+      function nextSlide() {
+        var activeSlide = $('.banner-carousel-item.active');
+        var nextSlide = activeSlide.next('.banner-carousel-item');
+  
+        if (nextSlide.length === 0) {
+          nextSlide = $('.banner-carousel-item:first');
+        }
+  
+        activeSlide.removeClass('active');
+        nextSlide.addClass('active');
+      }
+  
+      // Set interval for automatic sliding
+      setInterval(nextSlide, interval);
+    });
+  </script>
+  
+
 </head>
 
 <body>
@@ -223,7 +249,8 @@ FACEBOOK: https://www.facebook.com/themefisher
     </header>
     <!--/ Header end -->
 
-    <div class="banner-carousel banner-carousel-1 mb-0">
+
+    <div class="banner-carousel banner-carousel-1 mb-0 active">
       <div class="banner-carousel-item" style="background-image:url(images/slider-main/bg1.jpg)">
         <div class="slider-content">
           <div class="container h-100">
