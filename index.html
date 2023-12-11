@@ -53,12 +53,49 @@ FACEBOOK: https://www.facebook.com/themefisher
   <link rel="stylesheet" href="plugins/slick/slick.css">
   <link rel="stylesheet" href="plugins/slick/slick-theme.css">
   <!-- Colorbox -->
-  <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
   <!-- Template styles-->
   <link rel="stylesheet" href="css/style.css">
 
+  <style>
+    /* Stil örnekleri */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        z-index: 1000;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+</style>
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+  <script>
+    function showPopup(newsId) {
+        // Pop-up'ı görünür yap
+        document.getElementById('popup-' + newsId).style.display = 'block';
+        document.getElementById('overlay-' + newsId).style.display = 'block';
+    }
+
+    function closePopup(newsId) {
+        // Pop-up'ı gizle
+        document.getElementById('popup-' + newsId).style.display = 'none';
+        document.getElementById('overlay-' + newsId).style.display = 'none';
+    }
+</script>
   <script>
     $(document).ready(function () {
       // Set the intervals for each slide (in milliseconds)
@@ -200,7 +237,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                           </li>
       
                           <li class="nav-item dropdown">
-                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Şirket <i class="fa fa-angle-down"></i></a>
+                              <a href="about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Şirket <i class="fa fa-angle-down"></i></a>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a href="about.html">Hakkımızda</a></li>
                                 <li><a href="team.html">Ekibimiz</a></li>
@@ -928,6 +965,28 @@ FACEBOOK: https://www.facebook.com/themefisher
 
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
+              <div class="latest-post">
+                  <div class="latest-post-media">
+                      <a href="javascript:void(0);" class="latest-post-img" onclick="showPopup('news1')">
+                          <img loading="lazy" class="img-fluid" src="images/news/news1.jpg" alt="img">
+                      </a>
+                  </div>
+                  <div class="post-body">
+                      <h4 class="post-title">
+                          <a href="javascript:void(0);" class="d-inline-block" onclick="showPopup('news1')">Mid-Missouri'de 17,6 Milyon Dolarlık Tıbbi Kliniği Tamamladık</a>
+                      </h4>
+                      <div class="latest-post-meta">
+                          <span class="post-item-date">
+                              <i class="fa fa-clock-o"></i> July 20, 2017
+                          </span>
+                      </div>
+                  </div>
+              </div><!-- Latest post end -->
+          </div><!-- 1st post col end -->
+
+
+          <div id="popup-news1" class="popup">
+            
             <div class="latest-post">
               <div class="latest-post-media">
                 <a href="news-single.html" class="latest-post-img">
@@ -941,13 +1000,41 @@ FACEBOOK: https://www.facebook.com/themefisher
                 <div class="latest-post-meta">
                   <span class="post-item-date">
                     <i class="fa fa-clock-o"></i> July 20, 2017
+                  </span> 
+                </div>
+              </div>
+            </div><!-- Latest post end -->
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <button onclick="closePopup('news1')">Kapat</button>
+        </div>
+        
+        <!-- Overlay (Arka plan) -->
+        <div id="overlay-news1" class="overlay" onclick="closePopup('news1')"></div>
+              
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="latest-post">
+              <div class="latest-post-media">
+                <a href="javascript:void(0);" class="latest-post-img" onclick="showPopup('news2')">
+                  <img loading="lazy" class="img-fluid" src="images/news/news2.jpg" alt="img">
+                </a>
+              </div>
+              <div class="post-body">
+                <h4 class="post-title">
+                  <a href="javascript:void(0);" class="d-inline-block" onclick="showPopup('news1')">Thandler Havaalanı Su Arıtma Tesisi Genişletme Projesinin Adı Belli Oldu</a>
+                </h4>
+                <div class="latest-post-meta">
+                  <span class="post-item-date">
+                    <i class="fa fa-clock-o"></i> June 17, 2017
                   </span>
                 </div>
               </div>
             </div><!-- Latest post end -->
-          </div><!-- 1st post col end -->
+          </div><!-- 2nd post col end -->
 
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div id="popup-news2" class="popup">
+            
             <div class="latest-post">
               <div class="latest-post-media">
                 <a href="news-single.html" class="latest-post-img">
@@ -960,14 +1047,37 @@ FACEBOOK: https://www.facebook.com/themefisher
                 </h4>
                 <div class="latest-post-meta">
                   <span class="post-item-date">
-                    <i class="fa fa-clock-o"></i> June 17, 2017
+                    <i class="fa fa-clock-o"></i> July 20, 2017
+                  </span> 
+                </div>
+              </div>
+            </div><!-- Latest post end -->
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <button onclick="closePopup('news2')">Kapat</button>
+        </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="latest-post">
+              <div class="latest-post-media">
+                <a href="javascript:void(0);" class="latest-post-img" onclick="showPopup('news3')">
+                  <img loading="lazy" class="img-fluid" src="images/news/news3.jpg" alt="img">
+                </a>
+              </div>
+              <div class="post-body">
+                <h4 class="post-title">
+                  <a href="javascript:void(0);" class="d-inline-block" onclick="showPopup('news1')">Silikon Tezgah ve Kornike Güneş Enerjisi Tesislerinin İnşaatına Başlıyor</a>
+                </h4>
+                <div class="latest-post-meta">
+                  <span class="post-item-date">
+                    <i class="fa fa-clock-o"></i> Aug 13, 2017
                   </span>
                 </div>
               </div>
             </div><!-- Latest post end -->
-          </div><!-- 2nd post col end -->
-
-          <div class="col-lg-4 col-md-6 mb-4">
+          </div><!-- 3rd post col end -->
+          <div id="popup-news3" class="popup">
+            
             <div class="latest-post">
               <div class="latest-post-media">
                 <a href="news-single.html" class="latest-post-img">
@@ -980,12 +1090,16 @@ FACEBOOK: https://www.facebook.com/themefisher
                 </h4>
                 <div class="latest-post-meta">
                   <span class="post-item-date">
-                    <i class="fa fa-clock-o"></i> Aug 13, 2017
-                  </span>
+                    <i class="fa fa-clock-o"></i> July 20, 2017
+                  </span> 
                 </div>
               </div>
             </div><!-- Latest post end -->
-          </div><!-- 3rd post col end -->
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <button onclick="closePopup('news2')">Kapat</button>
+        </div>
+
         </div>
         <!--/ Content row end -->
 
@@ -1092,8 +1206,7 @@ FACEBOOK: https://www.facebook.com/themefisher
     <!-- Slick Carousel -->
     <script src="plugins/slick/slick.min.js"></script>
     <script src="plugins/slick/slick-animation.min.js"></script>
-    <!-- Color box -->
-    <script src="plugins/colorbox/jquery.colorbox.js"></script>
+   
     <!-- shuffle -->
     <script src="plugins/shuffle/shuffle.min.js" defer></script>
 
